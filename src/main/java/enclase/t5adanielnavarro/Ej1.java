@@ -24,6 +24,14 @@ public class Ej1 {
 
         mostrarPalabras(tresVocales(palabras));
         mostrarPalabras(dosVocales(palabras));
+
+        int[] posicionPalabras = new int[numeroPalabras];
+
+        posicionPalabras = posicionLetra(palabras,'a');
+        for (int i = 0; i < posicionPalabras.length; i++) {
+            System.out.println(palabras[i] + " letra a en la posicion" + posicionPalabras[i]);
+
+        }
     }
 
     public static int cuantasPalabras(String menu) {
@@ -64,13 +72,12 @@ public class Ej1 {
         char[] vocales = {'a', 'e', 'i', 'o', 'u'};
         int contador = 0;
         int total3Vocales = 0;
-        int contadorPalabra=0;
+        int contadorPalabra = 0;
 
         for (int x = 0; x < palabras.length; x++) {
             char[] letras = palabras[x].toCharArray();
             contador = 0;
-            
-            
+
             for (int i = 0; i < letras.length; i++) {
                 for (int z = 0; z < vocales.length; z++) {
                     if (letras[i] == vocales[z]) {
@@ -88,7 +95,6 @@ public class Ej1 {
         for (int x = 0; x < palabras.length; x++) {
             char[] letras = palabras[x].toCharArray();
             contador = 0;
-            
 
             for (int i = 0; i < letras.length; i++) {
                 for (int z = 0; z < vocales.length; z++) {
@@ -99,25 +105,24 @@ public class Ej1 {
 
             }
             if (contador >= 3) {
-                tresVocales[contadorPalabra++]=palabras[x];
+                tresVocales[contadorPalabra++] = palabras[x];
             }
         }
 
         return tresVocales;
     }
-    
+
     public static String[] dosVocales(String[] palabras) {
 
         char[] vocales = {'a', 'e', 'i', 'o', 'u'};
         int contador = 0;
         int total2Vocales = 0;
-        int contadorPalabra=0;
+        int contadorPalabra = 0;
 
         for (int x = 0; x < palabras.length; x++) {
             char[] letras = palabras[x].toCharArray();
             contador = 0;
-            
-            
+
             for (int i = 0; i < letras.length; i++) {
                 for (int z = 0; z < vocales.length; z++) {
                     if (letras[i] == vocales[z]) {
@@ -135,7 +140,6 @@ public class Ej1 {
         for (int x = 0; x < palabras.length; x++) {
             char[] letras = palabras[x].toCharArray();
             contador = 0;
-            
 
             for (int i = 0; i < letras.length; i++) {
                 for (int z = 0; z < vocales.length; z++) {
@@ -146,11 +150,36 @@ public class Ej1 {
 
             }
             if (contador < 3) {
-                dosVocales[contadorPalabra++]=palabras[x];
+                dosVocales[contadorPalabra++] = palabras[x];
             }
         }
 
         return dosVocales;
+    }
+
+    public static int[] posicionLetra(String[] palabras,char letra) {
+        
+        int[] posicionLetra = new int[palabras.length];
+        boolean seguir = true;
+        for (int x = 0; x < palabras.length; x++) {
+            char[] letras = palabras[x].toCharArray();
+            int i = 0;
+            seguir=true;
+            do {
+                if (i == letras.length) {
+                    posicionLetra[x] = -1;
+                    seguir = false;
+                } else if (letras[i] == letra) {
+                    posicionLetra[x] = i;
+                    seguir = false;
+                }
+                i++;
+
+            } while (seguir);
+
+        }
+
+        return posicionLetra;
     }
 
 }
