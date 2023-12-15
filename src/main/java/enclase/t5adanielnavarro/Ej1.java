@@ -27,9 +27,11 @@ public class Ej1 {
 
         int[] posicionPalabras = new int[numeroPalabras];
 
-        posicionPalabras = posicionLetra(palabras,'a');
+        String letraAPedir=JOptionPane.showInputDialog("introduce una letra");
+        char letrapedir=letraAPedir.charAt(0);
+        posicionPalabras = posicionLetra(palabras,letrapedir);
         for (int i = 0; i < posicionPalabras.length; i++) {
-            System.out.println(palabras[i] + " letra a en la posicion" + posicionPalabras[i]);
+            System.out.println(palabras[i] + " letra a en la posicion " + posicionPalabras[i]);
 
         }
     }
@@ -181,5 +183,7 @@ public class Ej1 {
 
         return posicionLetra;
     }
+    
+  
 
 }
